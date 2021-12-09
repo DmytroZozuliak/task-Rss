@@ -51,35 +51,37 @@ function listOlObjects(body: HTMLElement, arr: IObject[]) {
   const button = document.createElement("button");
   button.innerText = "Added";
 
-  for (let i = 0; i < len; i++) {
-    const item = document.createElement("li");
-    array.push(item);
-
-    item.addEventListener("click", () => {
-      div.innerText = arr[i].description;
-
-      array.forEach(i => {
-        i.style.backgroundColor = null;
-      });
-
-      item.style.backgroundColor = "red";
-      button.onclick = () => {
-        addField(body, arr[i], value => {
-          item.textContent = value.name;
-          div.textContent = value.description;
-          arr[i] = value;
-        });
-      };
-    });
-
-    item.textContent = arr[i].name;
-    list.append(item);
-  }
+  for (let i = 0; i < len; i++) {}
 
   body.append(list);
   body.append(div);
 
   body.append(button);
+}
+
+function createIteminObj(parent: HTMLElement, itemData: IObject): void {
+  const item = document.createElement("li");
+  array.push(item);
+
+  item.addEventListener("click", () => {
+    div.innerText = arr[i].description;
+
+    array.forEach(i => {
+      i.style.backgroundColor = null;
+    });
+
+    item.style.backgroundColor = "red";
+    button.onclick = () => {
+      addField(body, arr[i], value => {
+        item.textContent = value.name;
+        div.textContent = value.description;
+        arr[i] = value;
+      });
+    };
+  });
+
+  item.textContent = arr[i].name;
+  list.append(item);
 }
 
 function addField(body: HTMLElement, item: IObject, onOk: (value: IObject) => void) {
@@ -119,6 +121,7 @@ function addField(body: HTMLElement, item: IObject, onOk: (value: IObject) => vo
   buttonCancel.onclick = () => {
     divField.remove();
   };
+
   body.append(divField);
 }
 
